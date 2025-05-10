@@ -23,26 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-# Compiled class file
-*.class
-
 # Log file
-*.log
 *.txt
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://openjdk.java.net/projects/hotspot/
-hs_err_pid*
 
 # Bytecode outline files
 *.jcod
