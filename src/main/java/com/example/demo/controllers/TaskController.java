@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Task;
 import com.example.demo.models.User;
-import com.example.demo.services.NotificationService;
 import com.example.demo.services.TaskService;
 import com.example.demo.services.UserService;
 
@@ -19,13 +18,11 @@ public class TaskController {
 
     private final TaskService taskService;
     private final UserService userService;
-    private final NotificationService notificationService;
 
     @Autowired
-    public TaskController(TaskService taskService, UserService userService, NotificationService notificationService) {
+    public TaskController(TaskService taskService, UserService userService) {
         this.taskService = taskService;
         this.userService = userService;
-        this.notificationService = notificationService;
     }
 
     @GetMapping("/pending")
@@ -37,10 +34,6 @@ public class TaskController {
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Task>> getTasksByUserId(@PathVariable Long userId) {
         List<Task> tasks = taskService.getTasksByUserId(userId);
-
-        for (int i = 0; i < tasks.size(); i++)
-            notificationService.setReadNotificationTrue(tasks.get(i).getId());
-
         return ResponseEntity.ok(tasks);
     }
 

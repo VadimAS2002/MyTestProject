@@ -63,6 +63,11 @@ public class TaskService {
         Task task = tasks.get(id);
         if (task != null) {
             task.setDeleted(true);
+
+            Notification notification = new Notification();
+            notification.setMessage("Task '" + task.getTitle() + "' deleted.");
+            notification.setTask(task);
+            notificationService.createNotification(notification);
         }
     }
 }
